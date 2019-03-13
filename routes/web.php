@@ -23,11 +23,12 @@ Route::group(['prefix' => 'admin'],function(){
     // 登录验证页面
     Route::post('public/check','Admin\PublicController@check')->name('check');
 });
-// 后台路由组-权限
-Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
+// 后台路由组-权限 
+// 使用中间件middleware其参数必须指定自定义的guard,即auth:guard name
+Route::group(['prefix'=>'admin','middleware'=>'auth:admin'],function(){
     // 后台首页路由
     Route::get('index/index','Admin\IndexController@index');
     Route::get('index/welcome','Admin\IndexController@welcome');
-    // test 路由
-    Route::get('index/test','Admin\IndexController@test');
+    // 管理员列表首页路由
+    Route::get('manager/index','Admin\ManagerController@index');
 });
