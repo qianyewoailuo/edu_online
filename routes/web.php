@@ -29,6 +29,8 @@ Route::group(['prefix'=>'admin','middleware'=>'auth:admin'],function(){
     // 后台首页路由
     Route::get('index/index','Admin\IndexController@index');
     Route::get('index/welcome','Admin\IndexController@welcome');
-    // 管理员列表首页路由
+    // 管理员列表首页路由 - laravel框架分页
     Route::get('manager/index','Admin\ManagerController@index');
+    // 管理员列表首页路由 - datatables无刷新分页
+    Route::get('manager/showlist','Admin\ManagerController@showlist');
 });

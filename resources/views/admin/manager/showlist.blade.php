@@ -18,87 +18,6 @@
     <link rel="stylesheet" type="text/css" href="/admin/lib/Hui-iconfont/1.0.8/iconfont.css" />
     <link rel="stylesheet" type="text/css" href="/admin/static/h-ui.admin/skin/default/skin.css" id="skin" />
     <link rel="stylesheet" type="text/css" href="/admin/static/h-ui.admin/css/style.css" />
-    <style>
-        #paginate{
-            width:780px;
-			margin:auto;
-            text-align: center;
-        }
-        #pull_right {
-            text-align: center;
-        }
-        .pull-right {
-            /*float: left!important;*/
-        }
-        .pagination {
-            display: inline-block;
-            padding-left: 0;
-            margin: 20px auto;
-			/* width:400px; */
-            text-align: center;
-            border-radius: 4px;
-        }
-        .pagination>li {
-            display: inline;
-        }
-        .pagination>li>a,
-        .pagination>li>span {
-            position: relative;
-            float: left;
-            padding: 6px 12px;
-            margin-left: -1px;
-            line-height: 1.42857143;
-            color: #428bca;
-            text-decoration: none;
-            background-color: #fff;
-            border: 1px solid #ddd;
-        }
-        .pagination>li:first-child>a,
-        .pagination>li:first-child>span {
-            margin-left: 0;
-            border-top-left-radius: 4px;
-            border-bottom-left-radius: 4px;
-        }
-        .pagination>li:last-child>a,
-        .pagination>li:last-child>span {
-            border-top-right-radius: 4px;
-            border-bottom-right-radius: 4px;
-        }
-        .pagination>li>a:hover,
-        .pagination>li>span:hover,
-        .pagination>li>a:focus,
-        .pagination>li>span:focus {
-            color: #2a6496;
-            background-color: #eee;
-            border-color: #ddd;
-        }
-        .pagination>.active>a,
-        .pagination>.active>span,
-        .pagination>.active>a:hover,
-        .pagination>.active>span:hover,
-        .pagination>.active>a:focus,
-        .pagination>.active>span:focus {
-            z-index: 2;
-            color: #fff;
-            cursor: default;
-            background-color: #428bca;
-            border-color: #428bca;
-        }
-        .pagination>.disabled>span,
-        .pagination>.disabled>span:hover,
-        .pagination>.disabled>span:focus,
-        .pagination>.disabled>a,
-        .pagination>.disabled>a:hover,
-        .pagination>.disabled>a:focus {
-            color: #777;
-            cursor: not-allowed;
-            background-color: #fff;
-            border-color: #ddd;
-        }
-        .clear {
-            clear: both;
-        }
-    </style>
     <!--[if IE 6]>
 <script type="text/javascript" src="/admin/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
@@ -116,7 +35,7 @@
             <input type="text" class="input-text" style="width:250px" placeholder="输入管理员名称" id="" name="">
             <button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜用户</button>
         </div>
-        <div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="admin_add('添加管理员','admin-add.html','800','500')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加管理员</a></span> <span class="r">共有数据：<strong>{{$data->total()}}</strong> 条</span> </div>
+        <div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="admin_add('添加管理员','admin-add.html','800','500')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加管理员</a></span> <span class="r">共有数据：{{$count}}<strong></strong> 条</span> </div>
         <table class="table table-border table-bordered table-bg">
             <thead>
                 <tr>
@@ -155,14 +74,12 @@
                         @else
                         <a style="text-decoration:none" onClick="admin_start(this,'10001')" href="javascript:;" title="启用"><i class="Hui-iconfont">&#xe615;</i></a>
                         @endif
-                         <a title="编辑" href="javascript:;" onclick="admin_edit('管理员编辑','admin-add.html','1','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+                        <a title="编辑" href="javascript:;" onclick="admin_edit('管理员编辑','admin-add.html','1','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-    <!-- 模板分页 -->
-    <div id="paginate">{{$data->links()}}</div>
     <!--_footer 作为公共模版分离出去-->
     <script type="text/javascript" src="/admin/lib/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="/admin/lib/layer/2.4/layer.js"></script>
@@ -175,7 +92,20 @@
     <script type="text/javascript" src="/admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="/admin/lib/laypage/1.2/laypage.js"></script>
     <script type="text/javascript">
-    /*
+        $('table').dataTable({
+            // 可选配置项
+            // 例1禁用第一列使用排序
+            "columnDefs": [{
+                "orderable": false,
+                "targets": 0
+            }],
+            // 例2使第二列默认进行asc排序
+            "order": [
+                [1, "asc"]
+            ]
+        });
+
+        /*
 	参数解释：
 	title	标题
 	url		请求的url
