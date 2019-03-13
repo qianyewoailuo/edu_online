@@ -28,5 +28,6 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
     // 后台首页路由
     Route::get('index/index','Admin\IndexController@index');
     Route::get('index/welcome','Admin\IndexController@welcome');
-    // 
+    // test 路由
+    Route::get('index/test','Admin\IndexController@test');
 });
