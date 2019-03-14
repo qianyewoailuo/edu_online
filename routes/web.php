@@ -33,4 +33,8 @@ Route::group(['prefix'=>'admin','middleware'=>'auth:admin'],function(){
     Route::get('manager/index','Admin\ManagerController@index');
     // 管理员列表首页路由 - datatables无刷新分页
     Route::get('manager/showlist','Admin\ManagerController@showlist');
+    // 权限列表与权限添加路由
+    Route::get('auth/index','Admin\AuthController@index');
+    Route::any('auth/add','Admin\AuthController@add');
+
 });
