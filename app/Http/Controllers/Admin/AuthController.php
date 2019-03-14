@@ -8,13 +8,17 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 // 引入关系模型
 use App\Admin\Auth;
+use DB;
 
 class AuthController extends Controller
 {
     //权限管理首页列表方法
     public function index()
     {
-        return view('admin/auth/index');
+        // 联表查询>select t1.*,t2.auth_name as parent_name from auth as t1 leftjoin auth as t2 on t1.pid == t2.id
+        $data = DB::table('auth as t1')->select('t1.*','t2.auth_name as parent_name')->leftJoin('auth as t2','t1.pid','=','t2.id')->get();
+        // dd($data);
+        return view('admin/auth/index',compact('data'));
     }
     //权限管理添加方法
     public function add(Request $request)

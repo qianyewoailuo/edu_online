@@ -32,28 +32,42 @@
                 <button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜权限节点</button>
             </form>
         </div>
-        <div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="admin_permission_add('添加权限节点','/admin/auth/add','','370')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加权限节点</a></span> <span class="r">共有数据：<strong>54</strong> 条</span> </div>
+        <div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="admin_permission_add('添加权限节点','/admin/auth/add','','370')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加权限节点</a></span> <span class="r">共有数据：<strong>{{count($data)}}</strong> 条</span> </div>
         <table class="table table-border table-bordered table-bg">
             <thead>
                 <tr>
-                    <th scope="col" colspan="7">权限节点</th>
+                    <th scope="col" colspan="8">权限节点</th>
                 </tr>
                 <tr class="text-c">
                     <th width="25"><input type="checkbox" name="" value=""></th>
                     <th width="40">ID</th>
-                    <th width="200">权限名称</th>
-                    <th>字段名</th>
+                    <th width="140">权限名称</th>
+                    <th width="140">控制器名称</th>
+                    <th width="140">方法名称</th>
+                    <th width="140">父级权限</th>
+                    <th width="140">是否导航</th>
                     <th width="100">操作</th>
                 </tr>
             </thead>
             <tbody>
+            @foreach($data as $val)
                 <tr class="text-c">
                     <td><input type="checkbox" value="1" name=""></td>
-                    <td>1</td>
-                    <td>栏目添加</td>
-                    <td></td>
+                    <td>{{$val->id}}</td>
+                    <td>{{$val->auth_name}}</td>
+                    <td>@if($val->controller){{$val->controller}} @else N/A @endif</td>
+                    <td>@if($val->action){{$val->action}} @else N/A @endif</td>
+                    <td>
+                    @if($val->parent_name)
+                        {{$val->parent_name}}
+                    @else
+                        顶级权限
+                    @endif
+                    </td>
+                    <td>@if($val->is_nav == 1)是 @else 否 @endif</td>
                     <td><a title="编辑" href="javascript:;" onclick="admin_permission_edit('角色编辑','admin-permission-add.html','1','','310')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_permission_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
                 </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
@@ -67,14 +81,29 @@
     <!--请在下方写此页面业务相关的脚本-->
     <script type="text/javascript" src="/admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
-        /*
-	参数解释：
-	title	标题
-	url		请求的url
-	id		需要操作的数据id
-	w		弹出层宽度（缺省调默认值）
-	h		弹出层高度（缺省调默认值）
-*/
+    // datatables分页
+    $(function(){
+        $('table').dataTable({
+            // 可选配置项
+            // 例1禁用第一列使用排序
+            "columnDefs": [{
+                "orderable": false,
+                "targets": 0
+            }],
+            // 例2使第二列默认进行asc排序
+            "order": [
+                [1, "asc"]
+            ]
+        });
+    });
+     /*
+      *  参数解释：
+      *  title	标题
+      *  url	请求的url
+      *  id		需要操作的数据id
+      *  w		弹出层宽度（缺省调默认值）
+      *  h		弹出层高度（缺省调默认值）
+      */
         /*管理员-权限-添加*/
         function admin_permission_add(title, url, w, h) {
             layer_show(title, url, w, h);
@@ -107,4 +136,4 @@
     </script>
 </body>
 
-</html> 
+</html>
