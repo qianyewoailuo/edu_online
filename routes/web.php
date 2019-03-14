@@ -37,4 +37,8 @@ Route::group(['prefix'=>'admin','middleware'=>'auth:admin'],function(){
     Route::get('auth/index','Admin\AuthController@index');
     Route::any('auth/add','Admin\AuthController@add');
 
+    // 角色列表与角色分配权限路由
+    Route::get('role/index','Admin\RoleController@index');
+    Route::any('role/assign','Admin\RoleController@assign');
+
 });

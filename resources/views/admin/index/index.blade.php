@@ -47,7 +47,8 @@
                 </nav>
                 <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
                     <ul class="cl">
-                        <li>超级管理员</li>
+                        <!-- 获取认证用户的访问方法 Auth::guard('admin')->user() 得到的是管理员对象 -->
+                        <li>{{Auth::guard('admin')->user()->role->role_name}}</li>
                         <li class="dropDown dropDown_hover">
                             <a href="#" class="dropDown_A">{{Auth::guard('admin')->user()->username}} <i class="Hui-iconfont">&#xe6d5;</i></a>
                             <ul class="dropDown-menu menu radius box-shadow">

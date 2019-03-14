@@ -13,4 +13,9 @@ class Manager extends Model implements \Illuminate\Contracts\Auth\Authenticatabl
 
     // trait引用实现接口的抽象方法
     use Authenticatable;
+
+    // 定义与角色表的关联操作
+    public function role(){
+        return $this->hasOne('App\Admin\Role','id','role_id');
+    }
 }
