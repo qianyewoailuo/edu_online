@@ -41,4 +41,10 @@ Route::group(['prefix'=>'admin','middleware'=>['auth:admin','checkrbac']],functi
     Route::get('role/index','Admin\RoleController@index');
     Route::any('role/assign','Admin\RoleController@assign');
 
+    // 会员相关路由
+    Route::get('member/index','Admin\MemberController@index');
+    Route::any('member/add','Admin\MemberController@add');
+    Route::post('upload/webuploader','Admin\UploadController@webuploader');
+    Route::get('member/getareabyid','Admin\MemberController@getareabyid');
+
 });

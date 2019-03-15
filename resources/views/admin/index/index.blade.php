@@ -121,7 +121,7 @@
                 </dt>
                 <dd>
                     <ul>
-                        <li><a data-href="member-list.html" data-title="会员列表" href="javascript:;">会员列表</a></li>
+                        <li><a data-href="/admin/member/index" data-title="会员列表" href="javascript:;">会员列表</a></li>
                         <li><a data-href="member-del.html" data-title="删除的会员" href="javascript:;">删除的会员</a></li>
                         <li><a data-href="member-level.html" data-title="等级管理" href="javascript:;">等级管理</a></li>
                         <li><a data-href="member-scoreoperation.html" data-title="积分管理" href="javascript:;">积分管理</a>
