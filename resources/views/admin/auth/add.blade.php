@@ -140,7 +140,9 @@
                                 if(data == '1'){
                                     layer.msg('添加成功!', {icon: 1,time: 1500,},function(){
                                         var index = parent.layer.getFrameIndex(window.name);
-                                        parent.$('.btn-refresh').click();
+                                        // parent.$('.btn-refresh').click();
+                                        // 关闭窗口后刷新框架页面
+										parent.window.location = parent.window.location;
                                         parent.layer.close(index);
                                     });
                                 }else{
