@@ -43,6 +43,7 @@ Route::group(['prefix'=>'admin','middleware'=>['auth:admin','checkrbac']],functi
 
     // 会员相关路由
     Route::get('member/index','Admin\MemberController@index');
+    Route::any('member/showmember','Admin\MemberController@showmember');
     Route::any('member/add','Admin\MemberController@add');
     Route::post('upload/webuploader','Admin\UploadController@webuploader');
     Route::get('member/getareabyid','Admin\MemberController@getareabyid');

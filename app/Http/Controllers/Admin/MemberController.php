@@ -13,4 +13,10 @@ class MemberController extends Controller
         $data = Member::get();
         return view('admin/member/index',compact('data'));
     }
+    //会员资料展示方法
+    public function showmember(Request $request){
+        $id = $request->input('id');
+        $data = Member::where('id','=',$id)->first();
+        return view('admin/member/showmember',compact('data'));
+    }
 }

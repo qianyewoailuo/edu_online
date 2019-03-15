@@ -56,7 +56,7 @@
                     <tr class="text-c">
                         <td><input type="checkbox" value="{{$val->id}}" name=""></td>
                         <td>{{$val->id}}</td>
-                        <td><u style="cursor:pointer" class="text-primary" onclick="member_show('{{$val->username}}','member-show.html','10001','360','400')">{{$val->username}}</u></td>
+                        <td><u style="cursor:pointer" class="text-primary" onclick="member_show('{{$val->username}}','/admin/member/showmember','{{$val->id}}','400','420')">{{$val->username}}</u></td>
                         <td><img src="{{$val->avatar}}" alt="{{$val->username}}" width="70"></td>
                         <td>@if($val->gender==1)男@elseif($val->gender==2)女@else保密@endif</td>
                         <td>{{$val->mobile}}</td>
@@ -111,7 +111,7 @@
         }
         /*用户-查看*/
         function member_show(title, url, id, w, h) {
-            layer_show(title, url, w, h);
+            layer_show(title, url+'?id='+id, w, h);
         }
         /*用户-停用*/
         function member_stop(obj, id) {
