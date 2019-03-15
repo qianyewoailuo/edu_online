@@ -15,6 +15,7 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
+            // 这里可以加上访问失败没有登录的模板页面,然后再跳转回登录页面
             return route('login');
         }
     }
