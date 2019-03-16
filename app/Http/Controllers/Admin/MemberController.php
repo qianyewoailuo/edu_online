@@ -33,7 +33,8 @@ class MemberController extends Controller
                 'gender'      =>  Input::get('gender'),
                 'mobile'      =>  Input::get('mobile'),
                 'email'       =>  Input::get('email'),
-                'avatar'      =>  '/statics/avater.jpg',
+                // 从webupload文件上传response返回的的地址
+                'avatar'      =>  Input::get('avatar'),
                 'country_id'  =>  Input::get('country_id'),
                 'province_id' =>  Input::get('province_id'),
                 'city_id'     =>  Input::get('city_id'),

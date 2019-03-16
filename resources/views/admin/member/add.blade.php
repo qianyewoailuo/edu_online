@@ -19,6 +19,8 @@
     <link rel="stylesheet" type="text/css" href="/admin/lib/Hui-iconfont/1.0.8/iconfont.css" />
     <link rel="stylesheet" type="text/css" href="/admin/static/h-ui.admin/skin/default/skin.css" id="skin" />
     <link rel="stylesheet" type="text/css" href="/admin/static/h-ui.admin/css/style.css" />
+    <!-- 引入webuploadcss文件 -->
+    <link rel="stylesheet" type="text/css" href="/statics/webuploader-0.1.5/webuploader.css">
     <!--[if IE 6]>
 <script type="text/javascript" src="/admin/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
@@ -71,15 +73,21 @@
                     <input type="text" class="input-text" placeholder="@" name="email" id="email">
                 </div>
             </div>
-            <!-- 附件 -->
-            <!-- <div class="row cl">
-                <label class="form-label col-xs-4 col-sm-3">附件：</label>
-                <div class="formControls col-xs-8 col-sm-9"> <span class="btn-upload form-group">
-                        <input class="input-text upload-url" type="text" name="uploadfile" id="uploadfile" readonly nullmsg="请添加附件！" style="width:200px">
-                        <a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
-                        <input type="file" multiple name="file-2" class="input-file">
-                    </span> </div>
-            </div> -->
+            <!-- 附件图片上传 -->
+			<div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">头像：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <!-- 给webuploader使用的div -->
+                    <div id="uploader-demo">
+                        <!--用来存放item-->
+                        <div id="fileList" class="uploader-list">
+                            <!-- 添加隐藏域 -->
+                            <input type="hidden" name="avatar" value=""/>
+                        </div>
+                        <div id="filePicker">选择图片</div>
+                    </div>
+                </div>
+            </div>
             <!-- 地区联动 -->
             <div class="row cl">
                 <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>所属地区：</label>
@@ -165,6 +173,9 @@
     <script type="text/javascript" src="/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
     <script type="text/javascript" src="/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
     <script type="text/javascript" src="/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+    <!--引入webupload.JS-->
+    <script type="text/javascript" src="/statics/webuploader-0.1.5/webuploader.js"></script>
+    <script type="text/javascript" src="/statics/avatar.js"></script>
     <script type="text/javascript">
         $(function() {
             // 四级联动-国家>省份
