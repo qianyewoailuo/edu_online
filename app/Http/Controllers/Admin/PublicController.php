@@ -49,6 +49,7 @@ class PublicController extends Controller
             'username','password'
         ]);
         $data['status'] = '2';
+        // attempt第一个参数数组中的值被用于从数据表中查找用户,第二个参数是$remeber值
         $result = Auth::guard('admin') -> attempt($data,$request->get('online'));
         // dd($result);
         if($result){

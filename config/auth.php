@@ -45,7 +45,7 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
-        // 后端gauard
+        // 后端guard
         'admin' => [
             'driver' => 'session',
             'provider' => 'admin',

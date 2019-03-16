@@ -54,6 +54,5 @@ class MemberController extends Controller
         $data = DB::table('area')->where('pid',$id)->get();
         // laravel返回响应请求的方法是response()->json();
         return response()->json($data);
-
     }
 }
