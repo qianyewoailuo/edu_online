@@ -14,7 +14,10 @@ class LessonController extends Controller
         return view('admin/lesson/index',compact('data'));
     }
     // 点播视频展示
-    public function play(){
-        return 'hello world';
+    public function play(Request $request){
+        $id = $request->input('id');
+        $addr = Lesson::where('id',$id)->value('video_addr');
+        return "<div><video src='$addr' style='margin: auto;position:absolute;top:0;left:0;bottom:0;right:0;' width='80%' controls='controls'>您的浏览器不支持 video 标签。</video></div>";
+
     }
 }
