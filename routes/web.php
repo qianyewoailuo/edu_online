@@ -57,4 +57,13 @@ Route::group(['prefix'=>'admin','middleware'=>['auth:admin','checkrbac']],functi
     Route::get('lesson/index','Admin\LessonController@index');
     // 点播视频展示路由
     Route::get('lesson/play','Admin\LessonController@play');
+
+    // 试卷与试题相关路由
+    Route::get('paper/index','Admin\PaperController@index');
+    Route::get('question/index','Admin\QuestionController@index');
+    Route::get('question/showoptions','Admin\QuestionController@showoptions');
+    // 试题导入与导出
+    Route::get('question/import','Admin\QuestionController@import');
+    Route::any('question/export','Admin\QuestionController@export');
+
 });

@@ -76,7 +76,7 @@
     <aside class="Hui-aside">
         <div class="menu_dropdown bk_2">
             <dl id="menu-profession">
-                <dt><i class="Hui-iconfont">&#xe616;</i> 专业管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
+                <dt><i class="Hui-iconfont">&#xe638;</i> 专业管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
                 </dt>
                 <dd>
                     <ul>
@@ -87,7 +87,7 @@
                 </dd>
             </dl>
             <dl id="menu-lesson">
-                <dt><i class="Hui-iconfont">&#xe613;</i> 课程管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
+                <dt><i class="Hui-iconfont">&#xe639;</i> 课程管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
                 </dt>
                 <dd>
                     <ul>
@@ -96,15 +96,14 @@
                     </ul>
                 </dd>
             </dl>
-            <dl id="menu-product">
-                <dt><i class="Hui-iconfont">&#xe620;</i> 产品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
+            <dl id="menu-paper">
+                <dt><i class="Hui-iconfont">&#xe720;</i> 试卷管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
                 </dt>
                 <dd>
                     <ul>
-                        <li><a data-href="product-brand.html" data-title="品牌管理" href="javascript:void(0)">品牌管理</a></li>
-                        <li><a data-href="product-category.html" data-title="分类管理" href="javascript:void(0)">分类管理</a>
+                        <li><a data-href="/admin/paper/index" data-title="试卷列表" href="javascript:void(0)">试卷列表</a></li>
+                        <li><a data-href="/admin/question/index" data-title="试题列表" href="javascript:void(0)">试题列表</a>
                         </li>
-                        <li><a data-href="product-list.html" data-title="产品管理" href="javascript:void(0)">产品管理</a></li>
                     </ul>
                 </dd>
             </dl>
