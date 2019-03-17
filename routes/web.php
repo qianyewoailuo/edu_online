@@ -48,4 +48,9 @@ Route::group(['prefix'=>'admin','middleware'=>['auth:admin','checkrbac']],functi
     Route::post('uploader/webuploader','Admin\UploadController@webuploader');
     Route::get('member/getareabyid','Admin\MemberController@getareabyid');
 
+    // 专业与专业类型路由
+    Route::get('protype/index','Admin\ProtypeController@index');
+    Route::get('profession/index','Admin\ProfessionController@index');
+
+    // 课程与课程点播路由
 });
