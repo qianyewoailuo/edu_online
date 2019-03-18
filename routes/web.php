@@ -10,9 +10,7 @@
 |
 */
 // 默认首页路由
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','Home\IndexController@index');
 
 // 后台路由组-非权限
 Route::group(['prefix' => 'admin'],function(){
