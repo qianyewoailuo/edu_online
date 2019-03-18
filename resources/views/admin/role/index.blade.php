@@ -50,7 +50,7 @@
 				<td class="f-14">
                     	<a title="分派权限" href="javascript:;" onclick="admin_role_assign('分派权限','/admin/role/assign','{{$val -> id}}')" style="text-decoration:none"><i class="Hui-iconfont">&#xe603;</i></a>
                     	<a title="编辑" href="javascript:;" onclick="admin_role_edit('角色编辑','admin-role-add.html','1')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> 
-                    	<a title="删除" href="javascript:;" onclick="admin_role_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+                    	<a title="删除" href="javascript:;" onclick="admin_role_del(this,'{{$val->id}}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
 			</tr>
         @endforeach
 		</tbody>
@@ -93,14 +93,19 @@ function admin_role_del(obj,id){
 	layer.confirm('角色删除须谨慎，确认要删除吗？',function(index){
 		$.ajax({
 			type: 'POST',
-			url: '',
+			// 删除的时候记得加上_token
+			data:{'_token':"{{csrf_token()}}",'id':id},
+			url: '/admin/role/del',
 			dataType: 'json',
 			success: function(data){
-				$(obj).parents("tr").remove();
-				layer.msg('已删除!',{icon:1,time:1000});
-			},
-			error:function(data) {
-				console.log(data.msg);
+				if(data.status == '1'){
+					// 无刷新删除 
+					$(obj).parents("tr").remove();
+					layer.msg(data.msg,{icon:1,time:1000});
+					// location.href = "/admin/role/index";
+				}else{
+					layer.msg(data.msg,{icon:2,time:1000});
+				}
 			},
 		});		
 	});

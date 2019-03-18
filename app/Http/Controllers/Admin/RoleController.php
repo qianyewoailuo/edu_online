@@ -57,4 +57,20 @@ class RoleController extends Controller
             return view('admin/role/add',compact('top','cat'));
         }
     }
+    // 角色删除
+    public  function del()
+    {
+        $id = Input::get('id');
+        // $result = Role::where('id',$id)->delete();
+        // 真实业务中删除不应该直接删除数据,而是修改状态 此处暂时不删除了
+        $result = '1';
+        // var_dump($result);exit;
+        if($result){
+            $data = ['status' => '1','msg' => '删除成功'];
+        }else{
+            $data = ['status' => '0','msg' => '删除失败'];
+        }
+        return response()->json($data);
+        // var_dump($id);exit;
+    }
 }
