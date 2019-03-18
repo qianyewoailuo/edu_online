@@ -39,6 +39,8 @@ Route::group(['prefix'=>'admin','middleware'=>['auth:admin','checkrbac']],functi
 
     // 角色列表与角色分配权限路由
     Route::get('role/index','Admin\RoleController@index');
+    Route::any('role/add','Admin\RoleController@add');
+    Route::any('role/del','Admin\RoleController@del');
     Route::any('role/assign','Admin\RoleController@assign');
 
     // 会员相关路由

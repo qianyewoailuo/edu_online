@@ -24,7 +24,7 @@
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 管理员管理 <span class="c-gray en">&gt;</span> 角色管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-	<div class="cl pd-5 bg-1 bk-gray"> <span class="l"> <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" href="javascript:;" onclick="admin_role_add('添加角色','admin-role-add.html','800')"><i class="Hui-iconfont">&#xe600;</i> 添加角色</a> </span> <span class="r">共有数据：<strong>{{count($data)}}</strong> 条</span> </div>
+	<div class="cl pd-5 bg-1 bk-gray"> <span class="l"> <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" href="javascript:;" onclick="admin_role_add('添加角色','/admin/role/add','800')"><i class="Hui-iconfont">&#xe600;</i> 添加角色</a> </span> <span class="r">共有数据：<strong>{{count($data)}}</strong> 条</span> </div>
 	<table class="table table-border table-bordered table-hover table-bg">
 		<thead>
 			<tr>
@@ -34,7 +34,7 @@
 				<th width="25"><input type="checkbox" value="" name=""></th>
 				<th width="40">ID</th>
 				<th width="80">角色名</th>
-				<th width="300">权限ID集</th>
+				<th width="200">权限ID集</th>
 				<th width="300">权限AC集</th>
 				<th width="100">操作</th>
 			</tr>
@@ -65,6 +65,17 @@
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript" src="/admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
+    //jQuery的页面载入事件
+    $(function(){
+        //实例化dt
+        $('table').dataTable({
+            //禁用掉第一列的排序
+            "aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0 ] }],
+            //默认在初始化的时候按照哪一列进行排序
+            "aaSorting": [[ 1, "asc" ]],
+        });
+    });
+
 /*管理员-角色-添加*/
 function admin_role_add(title,url,w,h){
 	layer_show(title,url,w,h);
