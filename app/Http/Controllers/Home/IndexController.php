@@ -11,6 +11,9 @@ class IndexController extends Controller
     public function index(){
         // 直播课程列表
         $live = \App\Admin\live::orderBy('sort','desc')->where('status','1')->get();
-        return view('home/index/index');
+        // 如果不想在模版中判断输出可以如下
+        $profession = \App\Admin\Profession::orderBy('sort','desc')->get();
+        // dd($profession);
+        return view('home/index/index',compact('live','profession'));
     }
 }

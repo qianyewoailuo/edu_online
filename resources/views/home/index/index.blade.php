@@ -261,62 +261,31 @@
                 </div>
                 <div style="width:110%;">
                     <ul class="public-class-live-content clearfix">
+                    <!-- 直播列表 -->
+                    @foreach($live as $val)
                         <li>
                             <a style="cursor:pointer" data-url="/web/html/liveVideo.html?roomId=2C2A076B02BDE9FE9C33DC5901307461&amp;courseId=126">
-                                <div class="img"><img src="/home/img/7fc5a47439f2483b8dca9536144dcb6d.jpg"></div>
+                                <div class="img"><img src="{{$val->cover_img}}"></div>
                                 <div class="public-class-live-detail">
                                     <div class="detailCourseInfo clearfix">
-                                        <div class="detailCourseName" title="PS超级设计师公开课">PS超级设计师公开课</div>
+                                        <div class="detailCourseName" title="{{$val->live_name}}">{{$val->live_name}}</div>
                                     </div>
                                     <div class="detailLiveInfo clearfix">
-                                        <div class="detailLiveDate">最近直播：03/24 20:00</div>
-                                        <div class="detailLiving"><img src="/home/img/zhiboNoStart.png" alt=""><span class="noStart">直播未开始</span></div>
+                                        <div class="detailLiveDate">最近直播：{{date('Y-m-d H:i:s',$val->begin_at)}}</div>
+                                        <div class="detailLiving"><img src="/home/img/zhiboNoStart.png" alt=""><span class="noStart">
+                                        @if(time()>$val->end_at)
+                                            直播已结束
+                                        @elseif(time()<$val->end_at)
+                                            直播未开始
+                                        @else
+                                            正在直播
+                                        @endif
+                                        </span></div>
                                     </div>
                                 </div>
                             </a>
                         </li>
-                        <li>
-                            <a style="cursor:pointer" data-url="/web/html/liveVideo.html?roomId=6317E6566E2183799C33DC5901307461&amp;courseId=127">
-                                <div class="img"><img src="/home/img/6b89329bfba540d6a6ed90c8a921c0f7.jpg"></div>
-                                <div class="public-class-live-detail">
-                                    <div class="detailCourseInfo clearfix">
-                                        <div class="detailCourseName" title="大数据在线实战班串讲公开课（上）">大数据在线实战班串讲公开课（上）</div>
-                                    </div>
-                                    <div class="detailLiveInfo clearfix">
-                                        <div class="detailLiveDate">最近直播：03/17 20:00</div>
-                                        <div class="detailLiving"><img src="/home/img/zhiboNoStart.png" alt=""><span class="noStart">直播未开始</span></div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a style="cursor:pointer" data-url="/web/html/liveVideo.html?roomId=6317E6566E2183799C33DC5901307461&amp;courseId=128">
-                                <div class="img"><img src="/home/img/25d82cbefe3e4068a1a3197f62ebea67.jpg"></div>
-                                <div class="public-class-live-detail">
-                                    <div class="detailCourseInfo clearfix">
-                                        <div class="detailCourseName" title="AI基础设计师公开课">AI基础设计师公开课</div>
-                                    </div>
-                                    <div class="detailLiveInfo clearfix">
-                                        <div class="detailLiveDate">最近直播：03/23 20:00</div>
-                                        <div class="detailLiving"><img src="/home/img/zhiboNoStart.png" alt=""><span class="noStart">直播未开始</span></div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a style="cursor:pointer" data-url="/web/html/liveVideo.html?roomId=6317E6566E2183799C33DC5901307461&amp;courseId=129">
-                                <div class="img"><img src="/home/img/31616706e7a24505a30e665f48fcf079.jpg"></div>
-                                <div class="public-class-live-detail">
-                                    <div class="detailCourseInfo clearfix">
-                                        <div class="detailCourseName" title="大数据在线实战班串讲公开课（下）">大数据在线实战班串讲公开课（下）</div>
-                                    </div>
-                                    <div class="detailLiveInfo clearfix">
-                                        <div class="detailLiveDate">最近直播：03/30 20:00</div>
-                                        <div class="detailLiving"><img src="/home/img/zhiboNoStart.png" alt=""><span class="noStart">直播未开始</span></div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
+                    @endforeach
                     </ul>
                 </div>
             </div>
@@ -325,46 +294,21 @@
                 <h1>专业课程</h1>
                 <div id="log" style="width: 100%;">
                     <div id="content" class="content clearfix" style="width: 110%;">
+                        @foreach($profession as $val)
                         <div class="course clearfix">
                             <a href="http://www.boxuegu.com/web/html/payCourseDetailPage.html?id=76&amp;courseType=1&amp;free=0" target="_blank">
-                                <div class="img"><img src="/home/img/2e58d1b8496349aeb059846637061b92.jpg"></div><span class="classCategory">点播</span>
+                                <div class="img"><img src="{{$val->cover_img}}"></div><span class="classCategory">点播</span>
                                 <div class="detail">
-                                    <p class="title" data-text="微信小程序实战开发" title="微信小程序实战开发">微信小程序实战开发</p>
-                                    <p class="timeAndTeac"><span>18小时</span><i>|</i></p>
-                                    <p class="info clearfix"><span><i>￥</i><span class="price">199.00</span>
-                                        <del><i class="price1">￥</i>899.00</del>
-                                        </span><span class="stuCount"><img src="/home/img/studentCount.png" alt=""><span class="studentCou">57</span></span>
+                                    <p class="title" data-text="{{$val->pro_name}}" title="{{$val->pro_name}}">{{$val->pro_name}}</p>
+                                    <p class="timeAndTeac"><span>{{$val->duration}}小时</span><i>|</i></p>
+                                    <p class="info clearfix"><span><i>￥</i><span class="price">{{$val->price * 0.0001}}</span>
+                                        <del><i class="price1">￥</i>{{$val->price}}</del>
+                                        </span><span class="stuCount"><img src="/home/img/studentCount.png" alt=""><span class="studentCou">{{$val->view_count}}</span></span>
                                     </p>
                                 </div>
                             </a>
                         </div>
-                        <div class="course clearfix">
-                            <a href="http://www.boxuegu.com/web/html/payCourseDetailPage.html?id=123&amp;courseType=1&amp;free=0" target="_blank">
-                                <div class="img"><img src="/home/img/ebfa979d098848b6bd3c7b0bd9317568.jpg"></div><span class="classCategory">点播</span>
-                                <div class="detail">
-                                    <p class="title" data-text="Web前端开发基础班" title="Web前端开发基础班">Web前端开发基础班</p>
-                                    <p class="timeAndTeac"><span>35小时</span><i>|</i></p>
-                                    <p class="info clearfix"><span><i>￥</i><span class="price">299.00</span>
-                                        <del><i class="price1">￥</i>800.00</del>
-                                        </span><span class="stuCount"><img src="/home/img/studentCount.png" alt=""><span class="studentCou">1274</span></span>
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="course clearfix">
-                            <a href="http://www.boxuegu.com/web/html/payCourseDetailPage.html?id=77&amp;courseType=1&amp;free=0" target="_blank">
-                                <div class="img"><img src="/home/img/336eb94512234e20b26490661f666cf2.jpg"></div><span class="classCategory">点播</span>
-                                <div class="detail">
-                                    <p class="title" data-text="Web前端开发就业班" title="Web前端开发就业班">Web前端开发就业班</p>
-                                    <p class="timeAndTeac"><span>285小时</span><i>|</i></span>
-                                    </p>
-                                    <p class="info clearfix"><span><i>￥</i><span class="price">6500.00</span>
-                                        <del><i class="price1">￥</i>9900.00</del>
-                                        </span><span class="stuCount"><img src="/home/img/studentCount.png" alt=""><span class="studentCou">48</span></span>
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
+                        @endforeach
                         <div class="course clearfix">
                             <a href="http://www.boxuegu.com/web/html/payCourseDetailPage.html?id=125&amp;courseType=1&amp;free=0" target="_blank">
                                 <div class="img"><img src="/home/img/035ff49cca614aa5ad1c61358efe98ae.png"></div><span class="classCategory">点播</span>
