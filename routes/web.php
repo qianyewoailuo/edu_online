@@ -66,4 +66,10 @@ Route::group(['prefix'=>'admin','middleware'=>['auth:admin','checkrbac']],functi
     Route::get('question/import','Admin\QuestionController@import');
     Route::any('question/export','Admin\QuestionController@export');
 
+    // 直播流与直播间相关路由
+    Route::get('live/index','Admin\LiveController@index');
+    Route::get('stream/index','Admin\StreamController@index');
+    Route::any('stream/add','Admin\StreamController@add');
+
+
 });
