@@ -11,6 +11,8 @@
 */
 // 默认首页路由
 Route::get('/','Home\IndexController@index');
+// 我的动漫首页路由
+Route::get('/comic/index','Home\ComicController@index');
 
 // 后台路由组-非权限
 Route::group(['prefix' => 'admin'],function(){
@@ -70,6 +72,4 @@ Route::group(['prefix'=>'admin','middleware'=>['auth:admin','checkrbac']],functi
     Route::get('live/index','Admin\LiveController@index');
     Route::get('stream/index','Admin\StreamController@index');
     Route::any('stream/add','Admin\StreamController@add');
-
-
 });
