@@ -107,7 +107,7 @@
     	//禁用掉第一列的排序
     	"aoColumnDefs": [ { "bSortable": false, "aTargets": [ 0 ] }],
     	//默认在初始化的时候按照哪一列进行排序
-    	"aaSorting": [[ 4, "desc" ]],
+    	"aaSorting": [[ 1, "desc" ]],
     });
 
     /*

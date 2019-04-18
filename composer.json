@@ -14,7 +14,8 @@
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "maatwebsite/excel": "~2.1.0",
-        "mews/captcha": "^2.2"
+        "mews/captcha": "^2.2",
+        "zane/utils": "dev-master"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",

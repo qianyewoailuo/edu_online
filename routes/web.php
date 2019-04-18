@@ -13,6 +13,8 @@
 Route::get('/','Home\IndexController@index');
 // 我的动漫首页路由
 Route::get('/comic/index','Home\ComicController@index');
+// 测试 zanemmm/utils 类库路由
+Route::get('/zanemmm/test','Home\ZanemmmController@test');
 
 // 后台路由组-非权限
 Route::group(['prefix' => 'admin'],function(){
