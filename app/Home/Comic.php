@@ -8,4 +8,5 @@ class Comic extends Model
 {
     //定义关联模型
     protected $table = 'comic';
+    protected $pk = 'id';
 }
